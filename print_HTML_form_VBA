@@ -1,0 +1,42 @@
+Sub CreateHTML()
+' This VBA script creates HTML file. 
+  'Create an .html file in the assigned directory.
+  Dim sFile As Variant
+  Dim picFile As String
+  picFile = Cells(6, 3).Value
+   sFile = Application.GetSaveAsFilename(fileFilter:="HTML Files (*.html), *.htm")
+   If Filename <> False Then
+   SaveWorkbook = Filename
+   End If
+
+  'Open up the temp HTML file and format the header.
+    Open sFile For Output As #1
+    Print #1, "<html>"
+    Print #1, "<head>"
+    Print #1, "<p style = ""font-weight:bold;font-size:14;font-family:Calibri, Candara, Segoe;padding: 4px; margin: 3px; padding-left: 20px; width: 75%; text-align: justify;"">"; Cells(4, 3).Value, "</p>"
+    Print #1, "<p style = ""font-style:italic;font-size:14;font-family:Calibri, Candara, Segoe;padding: 0px; margin: 3px; padding-left: 20px; width: 75%; text-align: justify;"">"; Cells(5, 3).Value, "</p>"
+    Print #1, "<img Height = ""150"" src="; "'"; picFile; "'"; " > "
+    Print #1, "<p   "
+    Print #1, "<a style = ""color:Darkblue;font-style:normal;font-size:14;font-family:Calibri, Candara, Segoe;padding: 0px; margin: 3px; padding-left:20px; width: 75%;"">"
+    Print #1, "    Your</a>"
+    Print #1, "<a style = ""color:Darkblue;font-weight:bold;text-decoration:underline;font-style:italic;font-size:14;font-family:Calibri, Candara, Segoe; width: 75%;"">"
+    Print #1, "Complete</a>"
+    Print #1, "<a style = ""color:Green;font-style:italic;font-size:14;font-family:Calibri, Candara, Segoe; width: 75%;"">"
+    Print #1, "Energy</a>"
+    Print #1, "<a style = ""color:DarkBlue;font-style:italic;font-size:14;font-family:Calibri, Candara, Segoe;margin:3px; width: 75%;"">"
+    Print #1, "Management Experts!</a>"
+    Print #1, "</p>"
+    Print #1, "<p style = ""font-style:normal;font-size:14;font-family:Calibri, Candara, Segoe;padding: 0px; margin: 3px; padding-left: 20px; width: 75%; text-align: justify;"">"; Cells(16, 3).Value, "</p>"
+    Dim phone As String
+    phone = "T " & CStr(Cells(17, 3).Value) & "| " & "C " & CStr(Cells(18, 3).Value)
+    Print #1, "<p style = ""font-style:normal;font-size:14;font-family:Calibri, Candara, Segoe;padding: 0px; margin: 3px; padding-left: 20px; width: 75%; text-align: justify;"">"; phone, "</p>"
+    Print #1, "<a href= www.go.com style=""font-color:green;;font-family:Calibri, Candara, Segoe;padding: 0px; margin: 3px; padding-left: 20px; width: 75%; text-align: justify;"">"
+    Print #1, ; CStr(Cells(19, 3).Value), "</a>"
+    Print #1, "<a style = ""color:black;font-style:normal;font-size:14;font-family:Calibri, Candara, Segoe; width: 75%;"">"
+    Print #1, "|</a>"
+    Print #1, "<a href="; CStr(Cells(20, 3).Value), "style=""font-color:green;;font-family:Calibri, Candara, Segoe;padding: 0px; margin: 3px; padding-left: 0px; width: 75%; text-align: justify;"">"
+    Print #1, ; CStr(Cells(20, 3).Value), "</a>"
+  Print #1, "</body>"
+  Print #1, "</html>"
+  Close
+  End Sub
